@@ -1,0 +1,42 @@
+# @name CreateEvent
+POST http://localhost:3333/events
+Content-Type: application/json
+
+{
+    "name": "Event 3",
+    "description": "One more description",
+    "date": "2025-03-15T11:00:00",
+    "price": 200
+}
+
+###
+
+@eventId = {{ CreateEvent.response.body.id }} 
+
+###
+
+# @name GetEvents
+GET http://localhost:3333/events
+
+###
+
+# @name GetEvent
+GET http://localhost:3333/events/{{eventId}}
+
+###
+
+# @name UpdateEvent
+PATCH http://localhost:3333/events/{{eventId}}
+Content-Type: application/json
+
+{
+    "name": "New Event 2",
+    "description": "One more description",
+    "date": "2025-03-15T11:00:00",
+    "price": 300
+}
+
+###
+
+# @name DeleteEvent
+DELETE http://localhost:3333/events/{{eventId}}

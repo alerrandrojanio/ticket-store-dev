@@ -30,7 +30,7 @@ PATCH http://localhost:3333/events/{{eventId}}
 Content-Type: application/json
 
 {
-    "name": "New Event 2",
+    "name": "Media Day",
     "description": "One more description",
     "date": "2025-03-15T11:00:00",
     "price": 300
@@ -40,3 +40,44 @@ Content-Type: application/json
 
 # @name DeleteEvent
 DELETE http://localhost:3333/events/{{eventId}}
+
+###
+
+# @name GetSpots
+GET http://localhost:3333/events/{{eventId}}/spots
+
+###
+
+# @name CreateSpot
+POST http://localhost:3333/events/{{eventId}}/spots
+Content-Type: application/json
+
+{
+    "name": "Spot 1"
+}
+
+###
+
+@spotId = {{ CreateSpot.response.body.id }}
+
+###
+
+# @name GetSpot
+GET http://localhost:3333/events/{{eventId}}/spots/{{spotId}}
+
+###
+
+# @name UpdateSpot
+PATCH http://localhost:3333/events/{{eventId}}/spots/{{spotId}}
+Content-Type: application/json
+
+{
+    "name": "Spot 1"
+}
+
+###
+
+# @name DeleteSpot
+DELETE http://localhost:3333/events/{{eventId}}/spots/{{spotId}}
+
+###

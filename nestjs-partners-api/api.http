@@ -86,10 +86,10 @@ DELETE http://localhost:3333/events/{{eventId}}/spots/{{spotId}}
 # @name Reserve
 POST http://localhost:3333/events/{{eventId}}/reserve
 Content-Type: application/json
+X-Api-Token: 123
 
 {
     "spots": [
-        "A2",
         "A3"
     ],
     "ticketKind": "FULL",

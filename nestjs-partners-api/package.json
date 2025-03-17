@@ -8,6 +8,8 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
+    "migrate:partner01": "dotenv -e .env.partner01 -- npx prisma migrate dev",
+    "migrate:partner02": "dotenv -e .env.partner02 -- npx prisma migrate dev",
     "start": "nest start",
     "start:dev": "nest start --tsc --watch",
     "start:debug": "nest start --debug --watch",
@@ -21,10 +23,12 @@
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
+    "@nestjs/config": "^4.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^11.0.1",
     "@prisma/client": "^4.16.2",
+    "dotenv-cli": "^8.0.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },

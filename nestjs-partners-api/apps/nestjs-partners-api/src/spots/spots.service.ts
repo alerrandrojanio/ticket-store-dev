@@ -43,20 +43,36 @@ export class SpotsService {
   }
 
   update(eventId: string, spotId: string, updateSpotDto: UpdateSpotDto) {
-    return this.prismaService.spot.update({
-      data: updateSpotDto,
+    const spot = this.prismaService.spot.findFirst({
       where: {
         id: spotId,
         eventId,
       },
     });
+
+    if (!spot) throw new Error('Spot not found');
+
+    return this.prismaService.spot.update({
+      data: updateSpotDto,
+      where: {
+        id: spotId,
+      },
+    });
   }
 
   remove(eventId: string, spotId: string) {
-    return this.prismaService.spot.delete({
+    const spot = this.prismaService.spot.findFirst({
       where: {
         id: spotId,
         eventId,
+      },
+    });
+
+    if (!spot) throw new Error('Spot not found');
+
+    return this.prismaService.spot.delete({
+      where: {
+        id: spotId,
       },
     });
   }
